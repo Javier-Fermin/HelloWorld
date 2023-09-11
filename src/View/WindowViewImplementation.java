@@ -9,6 +9,11 @@ package View;
  *
  * @author javie
  */
-public class WindowViewImplementation {
+public class WindowViewImplementation implements ViewInterface{
+
+    @Override
+    public void showGreeting(String view) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

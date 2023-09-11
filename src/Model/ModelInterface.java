@@ -10,5 +10,5 @@ package Model;
  * @author javie
  */
 public interface ModelInterface {
-    
+    public String getGreeting();
 }

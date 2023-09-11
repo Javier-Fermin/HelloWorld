@@ -10,5 +10,5 @@ package View;
  * @author javie
  */
 public interface ViewInterface {
-    
+    public void showGreeting (String view);
 }
