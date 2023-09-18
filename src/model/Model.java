@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package model;
 
 /**
- *
- * @author javie
+ *This is an interface that is related to the Model
+ * @author Imanol
  */
-public interface ViewInterface {
-    public void showGreeting (String view);
+public interface Model {
+    /*
+    * This method returns a greeting
+    */
+    public String getGreeting();
 }

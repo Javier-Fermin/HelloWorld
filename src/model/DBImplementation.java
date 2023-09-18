@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package model;
 
 /**
  *
- * @author javie
+ * @author 
  */
-public class WindowViewImplementation implements ViewInterface{
+public class DBImplementation implements Model{
 
     @Override
-    public void showGreeting(String view) {
+    public String getGreeting() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
