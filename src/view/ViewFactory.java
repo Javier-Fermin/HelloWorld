@@ -21,10 +21,13 @@ public class ViewFactory {
      * @return the created view implementation 
      */
     public static View getView() {
-        if (Integer.parseInt(ResourceBundle.getBundle("Resources.Config").getString("VIEW")) == 0) {
-            return new TextViewImplementation();
-        } else {
-            return new WindowViewImplementation();
+        switch(Integer.parseInt(ResourceBundle.getBundle("resources.Config").getString("VIEW"))){
+            case 1:
+                return new WindowViewImplementation();
+            case 0:
+                return new TextViewImplementation();
+            default:
+                return null;
         }
     }
 }

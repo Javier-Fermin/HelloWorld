@@ -27,12 +27,14 @@ public class WindowViewImplementation extends javafx.application.Application imp
     private Label label;
     private String greeting;
     
+    /**
+     * This method recieves a greeting and then launch the application sending the greeting inside the params
+     * @param greeting 
+     */
     @Override
     public void showGreeting(String greeting) {
-        //Stage stage = new Stage();
         try {
-            String[] args = new String[1];
-            args[0] = greeting;
+            String[] args = {greeting};
             launch(args);
             
         } catch (Exception ex) {
@@ -40,11 +42,13 @@ public class WindowViewImplementation extends javafx.application.Application imp
         }
     }
 
+    
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("View.fxml"));
         Parent root = loader.load();
         WindowViewImplementation controller = loader.getController();
+        //Here we set the greeting in the view
         controller.setGreeting(getParameters().getRaw().get(0));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -52,7 +56,10 @@ public class WindowViewImplementation extends javafx.application.Application imp
         stage.showAndWait();
     }
 
-    
+    /**
+     * This method is responsible of seting the text of Label inside the view to the desired greeting
+     * @param greeting 
+     */
     public void setGreeting(String greeting){
         label.setText(greeting);
     }

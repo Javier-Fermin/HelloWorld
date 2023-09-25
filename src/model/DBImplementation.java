@@ -15,17 +15,23 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author
+ * This class gets the data from the DB 
+ * @author Imanol
  */
 public class DBImplementation implements Model {
     private Connection con;
     private PreparedStatement ptmt;
     private ResultSet rs;
+    
+    /**
+     * This method opens a connection against the DB
+     * @return conn
+     */
     public Connection openConnection() {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(
+                    //gets the info from the config file to log into the DB
                     ResourceBundle.getBundle("resources.Config").getString("URL"),
                     ResourceBundle.getBundle("resources.Config").getString("USER"),
                     ResourceBundle.getBundle("resources.Config").getString("PASSWORD")
@@ -36,10 +42,15 @@ public class DBImplementation implements Model {
         }
         return conn;
     }
-
+    
+    /*
+    *This method closes the current DB connection
+    *@return
+    */
     public void closeConnection(Connection conn) {
         if (conn != null) {
             try {
+                //closes the connection
                 conn.close();
             } catch (SQLException ex) {
                 Logger.getLogger(DBImplementation.class.getName()).log(Level.SEVERE, null, ex);
@@ -47,13 +58,17 @@ public class DBImplementation implements Model {
         }
 
     }
-
+    /*
+    *This method gets the greeting from the DB
+    *@return greeting
+    */
     @Override
     public String getGreeting() {
         String greeting = null;
         con = openConnection();
         
         try {
+            //gets the hello world message
             ptmt = con.prepareStatement("SELECT * FROM Messages WHERE message = 'Hello World!';");
             rs = ptmt.executeQuery();
             while(rs.next()){

@@ -18,10 +18,13 @@ public class ModelFactory {
      * @return returns a new FileImplementation or DBImplementation object
      */
     public static Model getModel() {
-        if (Integer.parseInt(ResourceBundle.getBundle("Resources.Config").getString("MODEL")) == 0) {
-            return new FileImplementation();
-        } else {
-            return new DBImplementation();
+        switch(Integer.parseInt(ResourceBundle.getBundle("resources.Config").getString("MODEL"))){
+            case 1:
+                return new DBImplementation();
+            case 0:
+                return new FileImplementation();
+            default:
+                return null;
         }
     }
 }

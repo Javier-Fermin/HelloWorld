@@ -21,7 +21,7 @@ public class FileImplementation implements Model {
      */
     @Override
     public String getGreeting() {
-        return ResourceBundle.getBundle("Resources.Config").getString("GREETING");
+        return ResourceBundle.getBundle("resources.Config").getString("GREETING");
     }
 
 }

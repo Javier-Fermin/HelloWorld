@@ -10,8 +10,8 @@ import model.ModelFactory;
 import view.ViewFactory;
 
 /**
- *
- * @author javie
+ * The main application for the Hello World challenge
+ * @author Javier, Imanol
  */
 public class Application {
 
