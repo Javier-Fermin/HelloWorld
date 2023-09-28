@@ -3,19 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package helloworld;
+package application;
+
+import controller.Controller;
+import model.ModelFactory;
+import view.ViewFactory;
 
 /**
- *
- * @author javie
+ * The main application for the Hello World challenge
+ * @author Javier, Imanol
  */
-public class HelloWorld {
+public class Application {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        new Controller().run(ViewFactory.getView(), ModelFactory.getModel());
     }
-    
 }
