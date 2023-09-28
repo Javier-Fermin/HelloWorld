@@ -18,8 +18,9 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
- *
- * @author javie
+ * This is an implementation of the View interface used for a JavaFX view
+ * 
+ * @author Javier
  */
 public class WindowViewImplementation extends javafx.application.Application implements View,Initializable{
 

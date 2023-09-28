@@ -5,6 +5,8 @@
  */
 package model;
 
+import resources.ExceptionManager;
+
 /**
  *This is an interface that is related to the Model
  * @author Imanol
@@ -13,5 +15,5 @@ public interface Model {
     /*
     * This method returns a greeting
     */
-    public String getGreeting();
+    public String getGreeting() throws ExceptionManager;
 }

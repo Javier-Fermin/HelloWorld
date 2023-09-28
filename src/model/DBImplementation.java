@@ -11,8 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import resources.ExceptionManager;
 
 /**
  * This class gets the data from the DB 
@@ -27,7 +26,7 @@ public class DBImplementation implements Model {
      * This method opens a connection against the DB
      * @return conn
      */
-    public Connection openConnection() {
+    public Connection openConnection() throws ExceptionManager{
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(
@@ -38,22 +37,21 @@ public class DBImplementation implements Model {
             );
             return conn;
         } catch (SQLException ex) {
-            Logger.getLogger(DBImplementation.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExceptionManager(ex.getMessage());
         }
-        return conn;
     }
     
     /*
     *This method closes the current DB connection
     *@return
     */
-    public void closeConnection(Connection conn) {
+    public void closeConnection(Connection conn) throws ExceptionManager {
         if (conn != null) {
             try {
                 //closes the connection
                 conn.close();
             } catch (SQLException ex) {
-                Logger.getLogger(DBImplementation.class.getName()).log(Level.SEVERE, null, ex);
+                throw new ExceptionManager(ex.getMessage());
             }
         }
 
@@ -63,7 +61,7 @@ public class DBImplementation implements Model {
     *@return greeting
     */
     @Override
-    public String getGreeting() {
+    public String getGreeting() throws ExceptionManager{
         String greeting = null;
         con = openConnection();
         
@@ -76,10 +74,10 @@ public class DBImplementation implements Model {
             }
             rs.close();
             ptmt.close();
+            closeConnection(con);
         } catch (SQLException ex) {
-            Logger.getLogger(DBImplementation.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExceptionManager(ex.getMessage());
         }
-        closeConnection(con);
         return greeting;
     }
 
