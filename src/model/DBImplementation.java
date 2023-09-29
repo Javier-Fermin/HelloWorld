@@ -67,7 +67,7 @@ public class DBImplementation implements Model {
         
         try {
             //gets the hello world message
-            ptmt = con.prepareStatement("SELECT * FROM Messages WHERE message = 'Hello World!';");
+            ptmt = con.prepareStatement("SELECT * FROM Messages LIMIT 1");
             rs = ptmt.executeQuery();
             while(rs.next()){
                 greeting = rs.getString("message");
